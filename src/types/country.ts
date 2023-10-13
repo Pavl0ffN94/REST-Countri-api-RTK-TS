@@ -15,7 +15,7 @@ type Language = {
 
 export type Country = {
     name: string,
-    natineName: string,
+    nativeName: string,
     flag: string,
     flags: {
         png: string,
@@ -25,7 +25,7 @@ export type Country = {
     subregion: string,
     capital: string,
     population: number,
-    topLevelDomain: string,
+    topLevelDomain: string[],
     borders: string[],
     currencies: Currency[],
     languages: Language[],

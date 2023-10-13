@@ -1,5 +1,8 @@
+import { memo } from 'react';
 import styled from 'styled-components';
 import { useNeighbors } from './use-neighbors';
+import {Country} from 'types';
+import {NavigateFunction} from 'react-router-dom';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -86,8 +89,10 @@ const Tag = styled.span`
   line-height: 1.5;
   cursor: pointer;
 `;
-
-export const Info = (props) => {
+interface InfoProps extends Country {
+push: NavigateFunction,
+}
+ const InfoImpl = (props:  InfoProps) => {
   const {
     name,
     nativeName,
@@ -139,7 +144,7 @@ export const Info = (props) => {
             <ListItem>
               <b>Currency</b>{' '}
               {currencies.map((c) => (
-                <span key={c.code}>{c.name} </span>
+                <span key={c.cod}>{c.name} </span>
               ))}
             </ListItem>
             <ListItem>
@@ -168,3 +173,5 @@ export const Info = (props) => {
     </Wrapper>
   );
 };
+
+export const Info = memo(InfoImpl)

@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import {memo} from 'react';
 
+import styled from 'styled-components';
 import { IoSearch } from 'react-icons/io5';
 import { useSearch } from './use-search';
 
@@ -31,7 +32,7 @@ const Input = styled.input.attrs({
   background-color: var(--colors-ui-base);
 `;
 
-export const Search = () => {
+ const SearchImpl = () => {
   const [search, handleSearch] = useSearch();
 
   return (
@@ -41,3 +42,4 @@ export const Search = () => {
     </InputContainer>
   );
 };
+export const Search = memo(SearchImpl);

@@ -1,7 +1,14 @@
+import { memo } from 'react';
 import { Info } from './Info';
 import { useDetails } from './use-details';
+import {NavigateFunction} from 'react-router-dom';
 
-const CountryDetails = ({ name = '', navigate }) => {
+interface CountryDetailsProps {
+  navigate: NavigateFunction,
+  name?: string,
+}
+
+const CountryDetailsImpl = ({ name = '', navigate }:CountryDetailsProps) => {
   const { status, error, currentCountry } = useDetails(name);
 
   return (
@@ -13,4 +20,4 @@ const CountryDetails = ({ name = '', navigate }) => {
   );
 };
 
-export { CountryDetails };
+export const CountryDetails = memo(CountryDetailsImpl);
